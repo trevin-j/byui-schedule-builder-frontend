@@ -9,7 +9,7 @@
       let formData = new FormData();
       formData.append('course_codes', courseCodes);
       formData.append('block', "2024;FA");
-      const response = await fetch('http://54.221.176.74:5000/submitcodes', {
+      const response = await fetch('http://api.coursebuilder.trevinjones.com:5000/submitcodes', {
       // const response = await fetch("http://localhost:5000/submitcodes", {
         method: 'POST',
         body: formData
