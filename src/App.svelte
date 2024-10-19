@@ -1,47 +1,74 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import Schedule from './Schedule.svelte';
+
+  let courses = [
+    {
+      name: "Course 1",
+      times: [
+        {
+          day: "M",
+          start: 7.0,
+          end: 10.0
+        },
+        {
+          day: "W",
+          start: 8.0,
+          end: 10.0
+        }
+      ],
+      course_code: "CSC 101",
+      section_num: "01",
+      delivery_method: "In-Person",
+      block: "Full",
+      title: "str",
+      num_credits: 3.0
+    },
+    {
+      name: "Course 2",
+      times: [
+        {
+          day: "M",
+          start: 10.0,
+          end: 12.0
+        },
+        {
+          day: "W",
+          start: 10.5,
+          end: 12.0
+        }
+      ],
+      course_code: "CSC 102",
+      section_num: "01",
+      delivery_method: "In-Person",
+      block: "Full",
+      title: "str",
+      num_credits: 3.0
+    },
+    {
+      name: "Course 3",
+      times: [
+        {
+          day: "T",
+          start: 12.0,
+          end: 14.0
+        },
+        {
+          day: "R",
+          start: 12.0,
+          end: 14.0
+        }
+      ],
+      course_code: "CSC 103",
+      section_num: "01",
+      delivery_method: "In-Person",
+      block: "Full",
+      title: "str",
+      num_credits: 3.0
+    }
+  ];
 </script>
 
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
+<div>
+  <h1>Your Weekly Schedule</h1>
+  <Schedule {courses} />
+</div>
