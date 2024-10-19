@@ -28,9 +28,11 @@
 </style>
 
 <form class="course-form" on:submit={handleSubmit}>
+  <label for="courseCodes">Enter course codes, separated by commas:</label>
+  <br />
   <input
     type="text"
-    placeholder="Enter course codes, separated by commas"
+    placeholder="E.g. CSE 110, CSE 210"
     bind:value={courseCodes}
   />
   <button type="submit">Submit</button>
