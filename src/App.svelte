@@ -3,9 +3,13 @@
   import CourseForm from './CourseForm.svelte';
 
   let courses = [];
+  let loading = false;
+  let _error = null;
 
   async function fetchSchedule(courseCodes) {
     try {
+      loading = true;
+      _error = null;
       let formData = new FormData();
       formData.append('course_codes', courseCodes);
       formData.append('block', "2024;FA");
@@ -18,6 +22,9 @@
       console.log(courses);
     } catch (error) {
       console.error('Error fetching schedule:', error);
+      _error = error;
+    } finally {
+      loading = false;
     }
   }
   function handleFormSubmit(event) {
@@ -28,5 +35,11 @@
 <div>
   <CourseForm on:submit={handleFormSubmit} />
   <h1>Your Weekly Schedule</h1>
+  {#if loading}
+    <p>Loading...</p>
+  {/if}
+  {#if _error !== null}
+    <p style="color: red;">Error fetching schedule. Please try again with different course codes.</p>
+  {/if}
   <Schedule {courses} />
 </div>
