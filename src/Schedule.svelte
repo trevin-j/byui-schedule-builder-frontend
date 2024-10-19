@@ -1,8 +1,9 @@
    <script>
     export let courses = [];
+
     const daysOfWeek = ['M', 'T', 'W', 'R', 'F'];
     const hoursInDay = 16; // Define the total number of hours you want to display (8 AM to 10 PM)
-    const blockHeight = 50; // Height of each hour block in pixels
+    const blockHeight = 100; // Height of each hour block in pixels
   
     const getTopPosition = (start) => {
       // Convert start time to a top position in pixels
@@ -37,7 +38,7 @@
       grid-template-columns: repeat(5, 1fr);
       gap: 10px;
       position: relative;
-      height: 700px; /* Total height for the schedule */
+      height: 1400px; /* Total height for the schedule */
     }
     .day-header {
       font-weight: bold;
@@ -65,7 +66,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        height: 700px;
+        height: 1400px;
         padding-right: 10px;
     }
     .time-label {
@@ -73,8 +74,8 @@
         padding-right: 5px;
         font-size: 14px;
         color: #666;
-        height: 50px;
-        line-height: 50px;
+        height: 100px;
+        line-height: 100px;
         font-weight: bold;
     }
   </style>
@@ -92,9 +93,9 @@
     {/each}
   
     {#each daysOfWeek as day}
-      <div style="position: relative; height: 700px;"> <!-- Relative positioning for each day -->
+      <div style="position: relative; height: 1400px;"> <!-- Relative positioning for each day -->
         {#each Array(hoursInDay) as _, i}
-            <div class="hour-line" style="top: {i * 50}px;"></div> <!-- Assuming each hour is 50px high -->
+            <div class="hour-line" style="top: {i * 100}px;"></div> <!-- Assuming each hour is 50px high -->
         {/each}
         {#each courses as course}
           {#each course.times as time}
@@ -105,8 +106,8 @@
                   top: {getTopPosition(time.start)}px; 
                   height: {getCourseHeight(time.start, time.end)}px;
                 ">
-                <strong>{course.name}</strong><br>
-                {course.course_code} {course.section_num}<br>
+                <strong>{course.title}</strong><br>
+                {course.course_code}-{course.section_number}<br>
                 {formatTime(time.start)} - {formatTime(time.end)} 
               </div>
             {/if}
