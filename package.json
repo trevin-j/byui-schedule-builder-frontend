@@ -1,15 +1,17 @@
 {
-  "name": "byui-schedul-builder-frontend",
+  "name": "byui-schedule-builder-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npx gh-pages -d dist"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "gh-pages": "^6.2.0",
     "svelte": "^4.2.19",
     "vite": "^5.4.8"
   }
